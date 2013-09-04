@@ -6,7 +6,7 @@ Description: This plugin is used to display a notification message if the browse
 Version: 1.0.0
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: 
-License: GPL2 license name e.g. GPL2
+License: GPL2 license
 */
 
 /**
@@ -24,12 +24,22 @@ interface JsDetectInterface{
 */
 class JsDetect implements JsDetectInterface
 {
+    /**
+     *  Function
+     *
+     *
+    */
     public function __construct()
     {
         add_action('wp_head', array($this,'wp_js_detect_style'));
 
     }
 
+    /**
+     *  Function
+     *
+     *
+    */
     public function wp_js_detect_style()
     {
     	$plugin_path=get_bloginfo('url').'/wp-content/plugins/wp-js-detect/';
@@ -41,8 +51,12 @@ class JsDetect implements JsDetectInterface
                      instructions how to enable JavaScript in your web browser</a>.    
                 </p>
             </div>
-            <script>
-                jQuery('#jsDisabled').hide();
+            <script language="javascript">
+                var item = getElementById('jsDisabled')[0];
+                  if (item.style.display == "block")
+                  {
+                    item.style.display = 'none';
+                  }
             </script>        
     	<style>
     	/*no JS message*/
