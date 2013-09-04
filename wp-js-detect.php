@@ -34,7 +34,7 @@ class JsDetect implements JsDetectInterface
     public function wp_js_detect()
     {
         ?>
-        <noscript>
+        
     	    <div id="jsDisabled">
                 <p>
                      For full functionality of this site it is necessary to enable JavaScript.
@@ -42,7 +42,10 @@ class JsDetect implements JsDetectInterface
                      instructions how to enable JavaScript in your web browser</a>.    
                 </p>
             </div>
-        </noscript>
+            <script>
+                jQuery('#jsDisabled').hide();
+            </script>
+
         <?php
     }    
     
