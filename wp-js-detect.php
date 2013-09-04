@@ -71,8 +71,8 @@ class JsDetect implements JsDetectInterface
                 </p>
             </div>
             <script language="javascript">
-                var item = getElementById('jsDisabled')[0];
-                if (item.style.display == "block")
+                var item = document.getElementById('jsDisabled');
+                if (item.style.display === "block" || !item.style.display )
                 {
                     item.style.display = 'none';
                 }
