@@ -15,7 +15,6 @@ License: GPL2 license name e.g. GPL2
 */
 interface JsDetectInterface{
     public function __construct();
-    public function wp_js_detect();
     public function wp_js_detect_style();
 }
 
@@ -28,14 +27,14 @@ class JsDetect implements JsDetectInterface
     public function __construct()
     {
         add_action('wp_head', array($this,'wp_js_detect_style'));
-        add_action('wp_footer', array($this,'wp_js_detect'));        
+
     }
 
-    public function wp_js_detect()
+    public function wp_js_detect_style()
     {
-        ?>
-        
-    	    <div id="jsDisabled">
+    	$plugin_path=get_bloginfo('url').'/wp-content/plugins/wp-js-detect/';
+    	?>
+            <div id="jsDisabled">
                 <p>
                      For full functionality of this site it is necessary to enable JavaScript.
                      Here are the <a href="http://www.enable-javascript.com/" target="_blank">
@@ -44,15 +43,7 @@ class JsDetect implements JsDetectInterface
             </div>
             <script>
                 jQuery('#jsDisabled').hide();
-            </script>
-
-        <?php
-    }    
-    
-    public function wp_js_detect_style()
-    {
-    	$plugin_path=get_bloginfo('url').'/wp-content/plugins/wp-js-detect/';
-    	?>
+            </script>        
     	<style>
     	/*no JS message*/
             #jsDisabled{
