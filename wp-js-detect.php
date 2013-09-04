@@ -6,7 +6,7 @@ Description: This plugin is used to display a notification message if the browse
 Version: 1.0.0
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: 
-License: GPL2 license
+License: GPLv3 license
 */
 
 /**
