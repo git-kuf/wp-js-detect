@@ -1,12 +1,29 @@
 <?php
 /*
 Plugin Name: WP JS Detect
-Plugin URI:  
+Plugin URI:  https://github.com/git-kuf/wp-js-detect
 Description: This plugin is used to display a notification message if the browser's Javascript is disabled.
 Version: 1.0.0
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
-Author URI: 
+Author URI: https://github.com/git-kuf/
 License: GPLv3 license
+*/
+
+/*  Copyright 2013  Kuflievskiy Alex  (email: kuflievskiy@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 /**
@@ -15,7 +32,7 @@ License: GPLv3 license
 */
 interface JsDetectInterface{
     public function __construct();
-    public function wp_js_detect_style();
+    public function wp_non_js_notification();
 }
 
 /**
@@ -25,38 +42,40 @@ interface JsDetectInterface{
 class JsDetect implements JsDetectInterface
 {
     /**
-     *  Function
+     *  Function __construct
+     *  This is a class constructor function.
      *
-     *
-    */
+     */
     public function __construct()
     {
-        add_action('wp_head', array($this,'wp_js_detect_style'));
-
+        add_action('wp_head', array($this,'wp_non_js_notification'));
     }
 
     /**
-     *  Function
+     *  Function wp_non_js_notification
+     *  This function is used to output the notification.
      *
-     *
-    */
-    public function wp_js_detect_style()
+     */
+    public function wp_non_js_notification()
     {
     	$plugin_path=get_bloginfo('url').'/wp-content/plugins/wp-js-detect/';
     	?>
             <div id="jsDisabled">
                 <p>
-                     For full functionality of this site it is necessary to enable JavaScript.
-                     Here are the <a href="http://www.enable-javascript.com/" target="_blank">
-                     instructions how to enable JavaScript in your web browser</a>.    
+                     <?php 
+                            _e('For full functionality of this site it is necessary to enable JavaScript.
+                                Here are the <a href="http://www.enable-javascript.com/" target="_blank"> 
+                                instructions how to enable JavaScript in your web browser</a>.'); 
+                     
+                     ?>    
                 </p>
             </div>
             <script language="javascript">
                 var item = getElementById('jsDisabled')[0];
-                  if (item.style.display == "block")
-                  {
+                if (item.style.display == "block")
+                {
                     item.style.display = 'none';
-                  }
+                }
             </script>        
     	<style>
     	/*no JS message*/
@@ -88,7 +107,7 @@ class JsDetect implements JsDetectInterface
                 color: #d13131;
             }
     	</style>
-    	<?php
+	    <?php
     }    
 }
 new JsDetect();
