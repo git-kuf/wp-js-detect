@@ -33,7 +33,7 @@ License: GPLv3 license
 interface JsDetectInterface{
     public function __construct();
 	public function install();
-	public function uninstall();	
+	public function uninstall();
 	public function plugin_settings();
     public function wp_non_js_notification();
 }
@@ -55,44 +55,44 @@ class JsDetect implements JsDetectInterface
 		add_action('admin_menu', array($this,'admin_menu_customization'));
 
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'uninstall' ) );		
+		register_deactivation_hook( __FILE__, array( $this, 'uninstall' ) );
     }
 
     /**
      * Function install
      * This public function is used to add plugin option.
-     * 
+     *
      * @param	-
      * @return	-
-     * 
-     */    		
+     *
+     */
     public function install()
     {
-		$wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.'); 								
+		$wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
 		add_option( 'wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes' );
-	}	    
-	
+	}
+
     /**
      * Function uninstall
      * This public function is used to remove plugin options.
-     * 
+     *
      * @param	-
      * @return	-
-     * 
-     */    		
+     *
+     */
     public function uninstall()
     {
-		delete_option( 'wp_non_js_notification_text' );
-	}	    
-		
+        delete_option( 'wp_non_js_notification_text' );
+	}
+
     /**
      * Function admin_menu_customization
      * This public function is used for
-     * 
+     *
      * @param
      * @return
-     * 
-     */    
+     *
+     */
     public function admin_menu_customization(){
         add_menu_page('Js Detect', 'Js Detect', 'administrator', 'js-detect-settings',  array($this,'plugin_settings'),'', 99999999 );
     }
@@ -100,19 +100,19 @@ class JsDetect implements JsDetectInterface
     /**
      * Function plugin_settings
      * This public function is used to update plugin settings.
-     * 
+     *
      * @param	-
      * @return	-
-     * 
-     */    	
+     *
+     */
     public function plugin_settings(){
-	
+
 		if(isset($_POST['wp_non_js_notification_text'])){
 			update_option('wp_non_js_notification_text',$_POST['wp_non_js_notification_text']);
 		}
 		?>
 		<div class="wrap">
-			<div id="icon-tools" class="icon32"><br /></div><h2>Js Detect Settings</h2>		
+			<div id="icon-tools" class="icon32"><br /></div><h2>Js Detect Settings</h2>
 				<form action="#" method="post">
 					<label for="wp_non_js_notification_text">No Js Notification:</label>
 					<textarea rows="10" class="large-text code" id="wp_non_js_notification_text" name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
@@ -122,7 +122,7 @@ class JsDetect implements JsDetectInterface
 		</div>
 		<?php
 	}
-	
+
     /**
      *  Function wp_non_js_notification
      *  This function is used to output the notification.
@@ -139,7 +139,7 @@ class JsDetect implements JsDetectInterface
 			{
 				item.style.display = 'none';
 			}
-		</script>        
+		</script>
     	<style>
     	/*no JS message*/
             #jsDisabled{
@@ -171,6 +171,6 @@ class JsDetect implements JsDetectInterface
             }
     	</style>
 	    <?php
-    }    
+    }
 }
 new JsDetect();
