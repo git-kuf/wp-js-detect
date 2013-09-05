@@ -31,11 +31,11 @@ License: GPLv3 license
  *
  */
 interface JsDetectInterface{
-    public function __construct();
+	public function __construct();
 	public function install();
 	public function uninstall();
 	public function plugin_settings();
-    public function wp_non_js_notification();
+	public function wp_non_js_notification();
 }
 
 /**
@@ -51,7 +51,7 @@ class JsDetect implements JsDetectInterface
      */
     public function __construct()
     {
-        add_action('wp_head', array($this,'wp_non_js_notification'));
+		add_action('wp_head', array($this,'wp_non_js_notification'));
 		add_action('admin_menu', array($this,'admin_menu_customization'));
 
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
