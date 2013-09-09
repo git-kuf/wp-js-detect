@@ -6,7 +6,7 @@ Description: This plugin is used to display a notification message if the browse
 Version: 1.0.1
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
-License: GPLv3 license
+License: GPLv2 license
 */
 
 /*  Copyright 2013  Kuflievskiy Alex  (email: kuflievskiy@gmail.com)
