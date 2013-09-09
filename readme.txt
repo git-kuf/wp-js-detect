@@ -14,14 +14,19 @@ This plugin is used to display a notification message if the browser's Javascrip
 This is a simple plugin that shows a notification if javascript is disabled in browser.
 
 = Features =
+* Plugin has an option page in the wordpress admin panel ( http://YOUR_SITE_DOMAIN_NAME/wp-admin/admin.php?page=js-detect-settings) where you can customize the notification message about disabled JS.
 
 = Documentation =
 
 Documentation will be maintained on the [GitHub Wiki here](https://github.com/git-kuf/wp-js-detect/wiki).
 
 = Add-ons =
+* There are no addons fo this simple plugin yet.
 
 = Contributing and reporting bugs =
+
+* You can post issues here: https://github.com/git-kuf/wp-js-detect/issues
+* You can contact me via email to notify about bug.
 
 = Support =
 
@@ -48,8 +53,11 @@ The manual installation method involves downloading the plugin and uploading it 
 == Frequently Asked Questions ==
 
 == Screenshots ==
-
+1. This is a notification if js is disabled.
+ 
 == Changelog ==
 
 = 1.0.0 =
 * First plugin version.
+= 1.0.1 =
+* Option to store and manage notification text has been added.

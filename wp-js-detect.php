@@ -118,6 +118,11 @@ class JsDetect implements JsDetectInterface
 					<textarea rows="10" class="large-text code" id="wp_non_js_notification_text" name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
 					<input type="submit" value="<?php _e('Update'); ?>" class="button button-primary button-large">
 				</form>
+				
+                <br />
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect" target="_blank" title="Make a Donation for Wp Js Detect Plugin">
+                  <img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt="" />
+                </a>  				
 			</div>
 		</div>
 		<?php
