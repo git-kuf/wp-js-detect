@@ -6,7 +6,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 Plugin Name: WP JS Detect
 Plugin URI:  https://github.com/git-kuf/wp-js-detect
 Description: This plugin is used to display a notification message if the browser's Javascript is disabled.
-Version: 1.0.1
+Version: 1.0.2
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
 License: GPLv2 license

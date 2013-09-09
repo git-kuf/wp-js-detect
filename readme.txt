@@ -61,3 +61,6 @@ The manual installation method involves downloading the plugin and uploading it 
 * First plugin version.
 = 1.0.1 =
 * NEW : Option to store and manage notification text has been added.
+= 1.0.2 =
+* NEW : Plugin security has been improved.
+* NEW : The WPML plugin support has been added. You can read more about WPML config here http://wpml.org/documentation/support/language-configuration-files/

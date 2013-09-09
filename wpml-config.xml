@@ -1,0 +1,5 @@
+<wpml-config>
+    <admin-texts>
+        <key name="wp_non_js_notification_text" />
+    </admin-texts>    
+</wpml-config>
