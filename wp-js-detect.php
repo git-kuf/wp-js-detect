@@ -1,4 +1,7 @@
 <?php
+
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
+
 /*
 Plugin Name: WP JS Detect
 Plugin URI:  https://github.com/git-kuf/wp-js-detect
