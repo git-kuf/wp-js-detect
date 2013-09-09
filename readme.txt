@@ -60,4 +60,4 @@ The manual installation method involves downloading the plugin and uploading it 
 = 1.0.0 =
 * First plugin version.
 = 1.0.1 =
-* Option to store and manage notification text has been added.
+* NEW : Option to store and manage notification text has been added.
