@@ -8,7 +8,7 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 Plugin Name: WP JS Detect
 Plugin URI:  https://github.com/git-kuf/wp-js-detect
 Description: This plugin is used to display a notification message if the browser's Javascript is disabled.
-Version: 1.0.2
+Version: 1.0.3
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
 License: GPLv2 license
@@ -122,53 +122,80 @@ class JsDetect implements JsDetectInterface
         <div class="wrap">
             <div id="icon-tools" class="icon32"><br/></div>
             <h2>Js Detect Settings</h2>
-            <table cellspacing="0" class="widefat post fixed" style="width: 100%">
-                <thead>
-                <tr>
-                    <th style="width:200px;" class="manage-column">
-                    </th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th class="manage-column"></th>
-                    <th></th>
-                </tr>
-                </tfoot>
-                <tbody>
-                <tr>
-                    <td class="column">
-                        <label for="wp_non_js_notification_text">No Js Notification:</label>
-                    </td>
-                    <td align="right" class="column">
-                        <form action="#" method="post">
-                            <textarea rows="10" class="large-text code" id="wp_non_js_notification_text"
-                                      name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
-                            <input type="submit" value="<?php _e('Update'); ?>"
-                                   class="button button-primary button-large">
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="column">
-                        <p>Donate to support further development.</p>
+            <a class="nav-tab " href="/wp-admin/admin.php?page=js-detect-settings">Plugin Settings</a>
+            <a class="nav-tab " href="/wp-admin/admin.php?page=js-detect-settings&tab=contact">Contacts</a>
+            <?php if($_GET['tab'] === 'contact'): ?>
+                <table cellspacing="0" class="widefat post fixed" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr>
+                            <td class="column">
+                                <p>Author: Kuflievskiy Alex </p>
+                                <p>Email: <a href="mailto:kuflievskiy@gmail.com">kuflievskiy@gmail.com</a></p>
+                                <p>Author URI: <a href="https://github.com/git-kuf/" target="_blank">https://github.com/git-kuf/</a></p>                            
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
 
-                        <p>I’m glad that you like my wordpress plugin and that you want to show your appreciation by
-                            donating. With your help I can make these plugins even better!</p>
+            <?php else: ?>
+                <table cellspacing="0" class="widefat post fixed" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th style="width:200px;" class="manage-column">
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th class="manage-column"></th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="column">
+                            <label for="wp_non_js_notification_text">No Js Notification:</label>
+                        </td>
+                        <td align="right" class="column">
+                            <form action="#" method="post">
+                                <textarea rows="10" class="large-text code" id="wp_non_js_notification_text"
+                                          name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
+                                <input type="submit" value="<?php _e('Update'); ?>"
+                                       class="button button-primary button-large">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="column">
+                            <p>Donate to support further development.</p>
 
-                        <p>You can donate money using the PayPal-button below (any amount makes me happy!)</p>
+                            <p>I’m glad that you like my wordpress plugin and that you want to show your appreciation by
+                                donating. With your help I can make these plugins even better!</p>
 
-                        <p>
-                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect"
-                               target="_blank" title="Make a Donation for Wp Js Detect Plugin">
-                                <img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt=""/>
-                            </a>
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                            <p>You can donate money using the PayPal-button below (any amount makes me happy!)</p>
+
+                            <p>
+                                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect"
+                                   target="_blank" title="Make a Donation for Wp Js Detect Plugin">
+                                    <img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt=""/>
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
     <?php
     }
