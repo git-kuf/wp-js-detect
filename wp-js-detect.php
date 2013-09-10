@@ -42,6 +42,7 @@ interface JsDetectInterface
     public function uninstall();
     public function plugin_settings();
     public function wp_non_js_notification();
+    public function plugin_settings_link($links);
 }
 
 /**
@@ -62,8 +63,12 @@ class JsDetect implements JsDetectInterface
 
         register_activation_hook(__FILE__, array($this, 'install'));
         register_deactivation_hook(__FILE__, array($this, 'uninstall'));
+        
+ 
+        $plugin = plugin_basename(__FILE__); 
+        add_filter("plugin_action_links_$plugin", array($this, 'plugin_settings_link') );
     }
-
+    
     /**
      * Function install
      * This public function is used to add plugin option.
@@ -248,6 +253,22 @@ class JsDetect implements JsDetectInterface
         </style>
     <?php
     }
+    
+    /**
+     *  Function plugin_settings_link
+     *  This function is used to add settings links on plugin page
+     *  @param $links
+     *  @return $links - array - extended array of the links.
+     *
+     */
+    public function plugin_settings_link($links) { 
+
+      array_unshift($links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>'); 
+      array_unshift($links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>'); 
+      array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>'); 
+      
+      return $links; 
+    }    
 }
 
 new JsDetect();
