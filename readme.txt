@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievs
 Tags: javascript,js, disabled js,disabled javascript,disabled javascript notification,disabled javascript message, warning 
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2
 
 This plugin is used to display a notification message if the browser's Javascript is disabled.
@@ -66,3 +66,5 @@ The manual installation method involves downloading the plugin and uploading it 
 * NEW : The WPML plugin support has been added. You can read more about WPML config here http://wpml.org/documentation/support/language-configuration-files/
 = 1.0.3 =
 * NEW : Plugin option tabs has been added.
+= 1.0.4 =
+* NEW : Ability to customize pop-up window from the backend has been added.
