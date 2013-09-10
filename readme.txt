@@ -5,7 +5,7 @@ Tags: javascript,js, disabled js,disabled javascript,disabled javascript notific
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 1.0.3
-License: GPLv3
+License: GPLv2
 
 This plugin is used to display a notification message if the browser's Javascript is disabled.
 
