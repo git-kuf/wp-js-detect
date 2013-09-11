@@ -11,7 +11,8 @@ This plugin is used to display a notification message if the browser's Javascrip
 
 == Description ==
 
-This is a simple plugin that shows a notification if javascript is disabled in browser.
+A WordPress plugin that can show simple notifications whenever it detects site visitors that have turned off JavaScript in their browser.
+This warning is completely customizable from a page in the WordPress backend.
 
 = Features =
 Plugin has an option page in the wordpress admin panel ( http://YOUR_SITE_DOMAIN_NAME/wp-admin/admin.php?page=js-detect-settings) where you can customize the notification message about disabled JS.
@@ -35,6 +36,9 @@ Use the WordPress.org forums for community support - I cannot offer support dire
 If you want help with a customisation, hire a developer!
 
 == Installation ==
+
+Unpack and upload it to the /wp-content/plugins/ directory.
+Activate the plugin through the 'Plugins' menu in WordPress.
 
 = Automatic installation =
 
