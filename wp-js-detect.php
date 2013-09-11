@@ -154,11 +154,14 @@ class JsDetect implements JsDetectInterface
      */
     public function plugin_settings()
     {
-
         if (isset($_POST['wp_non_js_notification_text'])) 
 		{
             update_option('wp_non_js_notification_text', $_POST['wp_non_js_notification_text']);
         }
+        if (isset($_POST['wp_non_js_notification_css'])) 
+		{
+            update_option('wp_non_js_notification_css', $_POST['wp_non_js_notification_css']);
+        }		
         ?>
         <div class="wrap">
             <div id="icon-tools" class="icon32"><br/></div>
