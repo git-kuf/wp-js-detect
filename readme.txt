@@ -58,7 +58,8 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Screenshots ==
 1. This is a notification if js is disabled.
- 
+2. Plugin options page. 
+
 == Changelog ==
 
 = 1.0.0 =
