@@ -5,7 +5,8 @@ Tags: javascript,js, disabled js,disabled javascript,disabled javascript notific
 Requires at least: 3.5
 Tested up to: 3.6.1
 Stable tag: 1.0.5
-License: GPLv2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin is used to display a notification message if the browser's Javascript is disabled.
 
@@ -15,7 +16,7 @@ A WordPress plugin that can show simple notifications whenever it detects site v
 This warning is completely customizable from a page in the WordPress backend.
 
 = Features =
-Plugin has an option page in the wordpress admin panel ( http://YOUR_SITE_DOMAIN_NAME/wp-admin/admin.php?page=js-detect-settings) where you can customize the notification message about disabled JS.
+Plugin has an option page in the wordpress admin panel where you can customize the notification message about disabled JS.
 
 = Documentation =
 
@@ -37,8 +38,10 @@ If you want help with a customisation, hire a developer!
 
 == Installation ==
 
-Unpack and upload it to the /wp-content/plugins/ directory.
-Activate the plugin through the 'Plugins' menu in WordPress.
+1. Unpack and upload it to the /wp-content/plugins/ directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Edit notification message if needed on the http://YOUR_SITE_DOMAIN_NAME/wp-admin/admin.php?page=js-detect-settings page.
+4. Enjoy!
 
 = Automatic installation =
 
