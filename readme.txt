@@ -3,8 +3,8 @@ Contributors: wpkuf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect
 Tags: javascript,js, disabled js,disabled javascript,disabled javascript notification,disabled javascript message, warning 
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 1.0.4
+Tested up to: 3.6.1
+Stable tag: 1.0.5
 License: GPLv2
 
 This plugin is used to display a notification message if the browser's Javascript is disabled.
@@ -73,3 +73,5 @@ The manual installation method involves downloading the plugin and uploading it 
 * NEW : Plugin option tabs has been added.
 = 1.0.4 =
 * NEW : Ability to customize pop-up window from the backend has been added.
+= 1.0.5 = 
+* NEW : Plugins JS and CSS locates in the separate files for now!  .js and .css files are included in the footer section of the site, so it should decrease the time of the site's loading. And you can pack these (.js+.css)files for now via other plugins!

@@ -8,7 +8,7 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 Plugin Name: WP JS Detect
 Plugin URI:  https://github.com/git-kuf/wp-js-detect
 Description: This plugin is used to display a notification message if the browser's Javascript is disabled.
-Version: 1.0.4
+Version: 1.0.5
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
 License: GPLv2 license
@@ -44,6 +44,9 @@ interface JsDetectInterface
     public function wp_non_js_notification();
     public function plugin_settings_link($links);
 	public function paypal_donate_button();	
+    
+    public function add_plugin_js();
+    public function add_plugin_css();
 }
 
 /**
@@ -68,7 +71,42 @@ class JsDetect implements JsDetectInterface
  
         $plugin = plugin_basename(__FILE__); 
         add_filter("plugin_action_links_$plugin", array($this, 'plugin_settings_link') );
+        
+        add_action('wp_footer', array($this, 'add_plugin_js'), -2);
+        add_action('wp_footer', array($this, 'add_plugin_css'),  -3);
+        add_action('plugin_wp_js_detect_css', array($this,'plugin_wp_js_detect_css'));
     }
+    
+    
+
+    /**
+     * Add script by wp_footer hook
+     *
+     * @return  void
+     */
+    public function add_plugin_js() {
+        wp_enqueue_script('wp-js-detect-js', get_bloginfo('url') . '/wp-content/plugins/wp-js-detect/js/plugin.js');
+    }
+    
+    /**
+     * Add styles by wp_footer hook
+     *
+     * @return  void
+     */
+    public function add_plugin_css() {
+        wp_enqueue_style('wp-js-detect-css-dynamic', get_bloginfo('url') . '/wp-content/plugins/wp-js-detect/css/dynamic.css.php');
+    }
+    
+    /**
+     *  Function plugin_wp_js_detect_css
+     *  This function outputs plugin option styles for pop-up window in the custom action named wp_non_js_notification_css
+     *  @param - 
+     *  @echo - CSS CODE
+    */
+    public function plugin_wp_js_detect_css(){
+        echo get_option('wp_non_js_notification_css'); 
+    }
+
     
     /**
      * Function install
@@ -171,25 +209,25 @@ class JsDetect implements JsDetectInterface
             <a class="nav-tab <?php echo ($_GET['tab'] == 'contact') ? 'nav-tab-active' : ''; ?>" href="/wp-admin/admin.php?page=js-detect-settings&tab=contact">Contacts Me</a>
             <?php if($_GET['tab'] === 'contact'): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
-                        <thead>
-                        <tr>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th></th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        <tr>
-                            <td class="column">
-                                <p>Author: Kuflievskiy Alex </p>
-                                <p>Email: <a href="mailto:kuflievskiy@gmail.com">kuflievskiy@gmail.com</a></p>
-                                <p>Author URI: <a href="https://github.com/git-kuf/" target="_blank">https://github.com/git-kuf/</a></p>                            
-                            </td>
-                        </tr>
-                        </tbody>
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="column">
+                            <p>Author: Kuflievskiy Alex </p>
+                            <p>Email: <a href="mailto:kuflievskiy@gmail.com">kuflievskiy@gmail.com</a></p>
+                            <p>Author URI: <a href="https://github.com/git-kuf/" target="_blank">https://github.com/git-kuf/</a></p>                            
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
             <?php elseif($_GET['tab'] === 'css'): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
@@ -273,18 +311,8 @@ class JsDetect implements JsDetectInterface
      */
     public function wp_non_js_notification()
     {
-        ?>
-        <div id="jsDisabled"><p><?php echo get_option('wp_non_js_notification_text'); ?></p></div>
-        <script language="javascript">
-            var item = document.getElementById('jsDisabled');
-            if (item.style.display === "block" || !item.style.display) {
-                item.style.display = 'none';
-            }
-        </script>
-        <style>
-            <?php echo get_option('wp_non_js_notification_css'); ?>
-        </style>
-    <?php
+        echo '<div id="jsDisabled"><p>' . get_option('wp_non_js_notification_text') . '</p></div>';
+
     }
     
     /**
@@ -299,8 +327,7 @@ class JsDetect implements JsDetectInterface
 
       array_unshift($links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>'); 
       array_unshift($links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>'); 
-      array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>'); 
-      
+      array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>');       
       return $links; 
     }    
 	
