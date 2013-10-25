@@ -10,16 +10,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin is used to display a notification message if the browser's Javascript is disabled.
 
-
-
-## Achievements
-Build Status "!https://travis-ci.org/git-kuf/wp-js-detect.png!":https://travis-ci.org/git-kuf/wp-js-detect
-
-Build Status "!https://secure.travis-ci.org/git-kuf/wp-js-detect.png?branch=master "!https://travis-ci.org/git-kuf/wp-js-detect
-Latest Stable Version "!https://poser.pugx.org/git-kuf/wp-js-detect/v/stable.png "!https://packagist.org/packages/git-kuf/wp-js-detect)
-Total Downloads "!https://poser.pugx.org/git-kuf/wp-js-detect/downloads.png "!https://packagist.org/packages/git-kuf/wp-js-detect)
-
-
 == Description ==
 
 A WordPress plugin that can show simple notifications whenever it detects site visitors that have turned off JavaScript in their browser.
