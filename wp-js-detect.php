@@ -83,18 +83,20 @@ class JsDetect implements JsDetectInterface
      * Add script by wp_footer hook
      *
      * @return  void
+     *
      */
     public function add_plugin_js() {
-        wp_enqueue_script('wp-js-detect-js', get_bloginfo('url') . '/wp-content/plugins/wp-js-detect/js/plugin.js');
+        wp_enqueue_script('wp-js-detect-js', plugins_url( 'js/plugin.js' , __FILE__ ));        
     }
     
     /**
      * Add styles by wp_footer hook
      *
      * @return  void
+     *
      */
     public function add_plugin_css() {
-        wp_enqueue_style('wp-js-detect-css-dynamic', get_bloginfo('url') . '/wp-content/plugins/wp-js-detect/css/dynamic.css.php');
+        wp_enqueue_style('wp-js-detect-css-dynamic', plugins_url( 'css/dynamic.css.php' , __FILE__ ));        
     }
     
     /**
@@ -120,15 +122,14 @@ class JsDetect implements JsDetectInterface
     {
         $wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
         add_option('wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes');
-		
-		$plugin_path = get_bloginfo('url') . '/wp-content/plugins/wp-js-detect/';
+
 		$wp_non_js_notification_css = "
 		/*no JS message*/
             #jsDisabled {
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                background: url(".$plugin_path."images/dark-bg.png) repeat;
+                background: url(" . plugins_url( 'images/dark-bg.png' , __FILE__ ) . ") repeat;
                 z-index: 2000;
             }
             #jsDisabled p {
@@ -142,7 +143,7 @@ class JsDetect implements JsDetectInterface
                 border-radius: 5px;
                 box-shadow: 0 0 10px #000;
                 padding: 30px 30px 30px 120px;
-                background: #fef5f2 url(".$plugin_path."images/symbol_error.png) 30px 50% no-repeat;
+                background: #fef5f2 url(" . plugins_url( 'images/symbol_error.png' , __FILE__ ) . ") 30px 50% no-repeat;
                 font-size: 20px;
                 text-align: left;
                 color: #333;
@@ -250,10 +251,8 @@ class JsDetect implements JsDetectInterface
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
-                                <textarea rows="50" class="large-text code" id="wp_non_js_notification_css"
-                                          name="wp_non_js_notification_css"><?php echo get_option('wp_non_js_notification_css'); ?></textarea>
-                                <input type="submit" value="<?php _e('Update'); ?>"
-                                       class="button button-primary button-large">
+                                <textarea rows="50" class="large-text code" id="wp_non_js_notification_css" name="wp_non_js_notification_css"><?php echo get_option('wp_non_js_notification_css'); ?></textarea>
+                                <input type="submit" value="<?php _e('Update'); ?>" class="button button-primary button-large">
                             </form>
                         </td>
                     </tr>
@@ -285,10 +284,8 @@ class JsDetect implements JsDetectInterface
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
-                                <textarea rows="10" class="large-text code" id="wp_non_js_notification_text"
-                                          name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
-                                <input type="submit" value="<?php _e('Update'); ?>"
-                                       class="button button-primary button-large">
+                                <textarea rows="10" class="large-text code" id="wp_non_js_notification_text" name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
+                                <input type="submit" value="<?php _e('Update'); ?>" class="button button-primary button-large">
                             </form>
                         </td>
                     </tr>
