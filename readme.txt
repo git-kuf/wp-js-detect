@@ -14,9 +14,9 @@ This plugin is used to display a notification message if the browser's Javascrip
 
 ## Achievements
 
-[![Build Status](https://secure.travis-ci.org/git-kuf/wp-js-detect.png?branch=master)](https://travis-ci.org/git-kuf/wp-js-detect)
-[![Latest Stable Version](https://poser.pugx.org/git-kuf/wp-js-detect/v/stable.png)](https://packagist.org/packages/git-kuf/wp-js-detect)
-[![Total Downloads](https://poser.pugx.org/git-kuf/wp-js-detect/downloads.png)](https://packagist.org/packages/git-kuf/wp-js-detect)
+Build Status "!https://secure.travis-ci.org/git-kuf/wp-js-detect.png?branch=master "!https://travis-ci.org/git-kuf/wp-js-detect
+Latest Stable Version "!https://poser.pugx.org/git-kuf/wp-js-detect/v/stable.png "!https://packagist.org/packages/git-kuf/wp-js-detect)
+Total Downloads "!https://poser.pugx.org/git-kuf/wp-js-detect/downloads.png "!https://packagist.org/packages/git-kuf/wp-js-detect)
 
 
 == Description ==
