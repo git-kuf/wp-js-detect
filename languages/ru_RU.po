@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JsDetect v1.0.7\n"
+"POT-Creation-Date: 2013-11-27 17:08+0200\n"
+"PO-Revision-Date: 2013-11-27 17:10+0200\n"
+"Last-Translator: \n"
+"Language-Team: Kuflievskiy Aleksey <kuflievskiy@gmail.com>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../wp-js-detect.php:187
+msgid "Js Detect"
+msgstr "Js Detect"
+
+#: ../wp-js-detect.php:209
+msgid "Js Detect Settings"
+msgstr "Js Detect Настроки"
+
+#: ../wp-js-detect.php:211
+msgid "Plugin Settings"
+msgstr "Настройки плагина"
+
+#: ../wp-js-detect.php:213
+msgid "Plugin CSS"
+msgstr "Стили"
+
+#: ../wp-js-detect.php:215
+msgid "Contacts Me"
+msgstr "Контакты автора"
+
+#: ../wp-js-detect.php:231
+msgid "Author"
+msgstr "Автор"
+
+#: ../wp-js-detect.php:233
+msgid "Email"
+msgstr "Email"
+
+#: ../wp-js-detect.php:235
+msgid "Author URI"
+msgstr "Адрес "
+
+#: ../wp-js-detect.php:264 ../wp-js-detect.php:300
+msgid "Update"
+msgstr "Сохранить"
+
+#: ../wp-js-detect.php:294
+msgid "No Js Notification"
+msgstr "Уведомление при выключенном JavaScript"
+
+#: ../wp-js-detect.php:352
+msgid "Donate to support further development."
+msgstr "Поддержать дальнейшее развитие."
+
+#: ../wp-js-detect.php:353
+msgid ""
+"I’m glad that you like my wordpress plugin and that you want to show your "
+"appreciation by\n"
+"\t\t\tdonating. With your help I can make these plugins even better!"
+msgstr ""
+"Мне очень приятно, что Вам нравиться мой плагин и что Вы показываете это "
+"своими взносами. С Вашей помощью я смогу сделать этот плагин лучше!"
+
+#: ../wp-js-detect.php:355
+msgid ""
+"You can donate money using the PayPal-button below (any amount makes me "
+"happy!)"
+msgstr ""
+"Вы можете выслать деньги используя  PayPal ( любая сумма сделает меня "
+"счастливым! :) )"

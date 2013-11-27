@@ -6,9 +6,9 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 
 /*
 Plugin Name: WP JS Detect
-Plugin URI:  https://github.com/git-kuf/wp-js-detect
-Description: This plugin is used to display a notification message if the browser's Javascript is disabled.
-Version: 1.0.6
+Plugin URI:  http://wordpress.org/plugins/wp-js-detect/
+Description: This plugin is used to display a notification message if the browser's Javascript is disabled. <a href="https://github.com/git-kuf/wp-js-detect" target="blank" title="GitHub Project Link">GitHub Project Link</a>
+Version: 1.0.7
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
 License: GPLv2 license
@@ -43,10 +43,10 @@ interface JsDetectInterface
     public function plugin_settings();
     public function wp_non_js_notification();
     public function plugin_settings_link($links);
-	public function paypal_donate_button();	
-    
+    public function paypal_donate_button();
     public function add_plugin_js();
     public function add_plugin_css();
+    public function js_detect_init();
 }
 
 /**
@@ -67,17 +67,17 @@ class JsDetect implements JsDetectInterface
 
         register_activation_hook(__FILE__, array($this, 'install'));
         register_deactivation_hook(__FILE__, array($this, 'uninstall'));
-        
- 
-        $plugin = plugin_basename(__FILE__); 
-        add_filter("plugin_action_links_$plugin", array($this, 'plugin_settings_link') );
-        
+
+        $plugin = plugin_basename(__FILE__);
+        add_filter("plugin_action_links_$plugin", array($this, 'plugin_settings_link'));
+
         add_action('wp_footer', array($this, 'add_plugin_js'), -2);
-        add_action('wp_footer', array($this, 'add_plugin_css'),  -3);
-        add_action('plugin_wp_js_detect_css', array($this,'plugin_wp_js_detect_css'));
+        add_action('wp_footer', array($this, 'add_plugin_css'), -3);
+        add_action('plugin_wp_js_detect_css', array($this, 'plugin_wp_js_detect_css'));
+
+        add_action('plugins_loaded', array($this, 'js_detect_init'));
     }
-    
-    
+
 
     /**
      * Add script by wp_footer hook
@@ -85,31 +85,35 @@ class JsDetect implements JsDetectInterface
      * @return  void
      *
      */
-    public function add_plugin_js() {
-        wp_enqueue_script('wp-js-detect-js', plugins_url( 'js/plugin.js' , __FILE__ ));        
+    public function add_plugin_js()
+    {
+        wp_enqueue_script('wp-js-detect-js', plugins_url('js/plugin.js', __FILE__));
     }
-    
+
     /**
      * Add styles by wp_footer hook
      *
      * @return  void
      *
      */
-    public function add_plugin_css() {
-        wp_enqueue_style('wp-js-detect-css-dynamic', plugins_url( 'css/dynamic.css.php' , __FILE__ ));        
+    public function add_plugin_css()
+    {
+        wp_enqueue_style('wp-js-detect-css-dynamic', plugins_url('css/dynamic.css.php', __FILE__));
     }
-    
+
     /**
      *  Function plugin_wp_js_detect_css
      *  This function outputs plugin option styles for pop-up window in the custom action named wp_non_js_notification_css
-     *  @param - 
-     *  @echo - CSS CODE
-    */
-    public function plugin_wp_js_detect_css(){
-        echo get_option('wp_non_js_notification_css'); 
+     *
+     * @param -
+     * @echo - CSS CODE
+     */
+    public function plugin_wp_js_detect_css()
+    {
+        echo get_option('wp_non_js_notification_css');
     }
 
-    
+
     /**
      * Function install
      * This public function is used to add plugin option.
@@ -123,13 +127,13 @@ class JsDetect implements JsDetectInterface
         $wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
         add_option('wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes');
 
-		$wp_non_js_notification_css = "
+        $wp_non_js_notification_css = "
 		/*no JS message*/
             #jsDisabled {
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                background: url(" . plugins_url( 'images/dark-bg.png' , __FILE__ ) . ") repeat;
+                background: url(" . plugins_url('images/dark-bg.png', __FILE__) . ") repeat;
                 z-index: 2000;
             }
             #jsDisabled p {
@@ -143,7 +147,7 @@ class JsDetect implements JsDetectInterface
                 border-radius: 5px;
                 box-shadow: 0 0 10px #000;
                 padding: 30px 30px 30px 120px;
-                background: #fef5f2 url(" . plugins_url( 'images/symbol_error.png' , __FILE__ ) . ") 30px 50% no-repeat;
+                background: #fef5f2 url(" . plugins_url('images/symbol_error.png', __FILE__) . ") 30px 50% no-repeat;
                 font-size: 20px;
                 text-align: left;
                 color: #333;
@@ -153,7 +157,7 @@ class JsDetect implements JsDetectInterface
                 color: #d13131;
             }
 		";
-		add_option('wp_non_js_notification_css', $wp_non_js_notification_css, '', 'yes');
+        add_option('wp_non_js_notification_css', $wp_non_js_notification_css, '', 'yes');
     }
 
     /**
@@ -167,7 +171,7 @@ class JsDetect implements JsDetectInterface
     public function uninstall()
     {
         delete_option('wp_non_js_notification_text');
-        delete_option('wp_non_js_notification_css');		
+        delete_option('wp_non_js_notification_css');
     }
 
     /**
@@ -180,7 +184,7 @@ class JsDetect implements JsDetectInterface
      */
     public function admin_menu_customization()
     {
-        add_menu_page('Js Detect', 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
+        add_menu_page(_('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
     }
 
     /**
@@ -193,22 +197,23 @@ class JsDetect implements JsDetectInterface
      */
     public function plugin_settings()
     {
-        if (isset($_POST['wp_non_js_notification_text'])) 
-		{
+        if (isset($_POST['wp_non_js_notification_text'])) {
             update_option('wp_non_js_notification_text', $_POST['wp_non_js_notification_text']);
         }
-        if (isset($_POST['wp_non_js_notification_css'])) 
-		{
+        if (isset($_POST['wp_non_js_notification_css'])) {
             update_option('wp_non_js_notification_css', $_POST['wp_non_js_notification_css']);
-        }		
+        }
         ?>
         <div class="wrap">
             <div id="icon-tools" class="icon32"><br/></div>
-            <h2>Js Detect Settings</h2>
-            <a class="nav-tab <?php echo ($_GET['tab'] == '') ? 'nav-tab-active' : ''; ?>" href="/wp-admin/admin.php?page=js-detect-settings">Plugin Settings</a>
-            <a class="nav-tab <?php echo ($_GET['tab'] == 'css') ? 'nav-tab-active' : ''; ?>" href="/wp-admin/admin.php?page=js-detect-settings&tab=css">Plugin CSS</a>			
-            <a class="nav-tab <?php echo ($_GET['tab'] == 'contact') ? 'nav-tab-active' : ''; ?>" href="/wp-admin/admin.php?page=js-detect-settings&tab=contact">Contacts Me</a>
-            <?php if($_GET['tab'] === 'contact'): ?>
+            <h2><?php _e('Js Detect Settings','js-detect'); ?></h2>
+            <a class="nav-tab <?php echo ($_GET['tab'] == '') ? 'nav-tab-active' : ''; ?>"
+               href="/wp-admin/admin.php?page=js-detect-settings"><?php _e('Plugin Settings','js-detect'); ?></a>
+            <a class="nav-tab <?php echo ($_GET['tab'] == 'css') ? 'nav-tab-active' : ''; ?>"
+               href="/wp-admin/admin.php?page=js-detect-settings&tab=css"><?php _e('Plugin CSS','js-detect'); ?></a>
+            <a class="nav-tab <?php echo ($_GET['tab'] == 'contact') ? 'nav-tab-active' : ''; ?>"
+               href="/wp-admin/admin.php?page=js-detect-settings&tab=contact"><?php _e('Contacts Me','js-detect'); ?></a>
+            <?php if ($_GET['tab'] === 'contact'): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
                     <tr>
@@ -223,14 +228,17 @@ class JsDetect implements JsDetectInterface
                     <tbody>
                     <tr>
                         <td class="column">
-                            <p>Author: Kuflievskiy Alex </p>
-                            <p>Email: <a href="mailto:kuflievskiy@gmail.com">kuflievskiy@gmail.com</a></p>
-                            <p>Author URI: <a href="https://github.com/git-kuf/" target="_blank">https://github.com/git-kuf/</a></p>                            
+                            <p><?php _e('Author','js-detect'); ?>: Kuflievskiy Aleksey </p>
+
+                            <p><?php _e('Email','js-detect'); ?>: <a href="mailto:kuflievskiy@gmail.com">kuflievskiy@gmail.com</a></p>
+
+                            <p><?php _e('Author URI','js-detect'); ?>: <a href="https://github.com/git-kuf/" target="_blank">https://github.com/git-kuf/</a>
+                            </p>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-            <?php elseif($_GET['tab'] === 'css'): ?>
+            <?php elseif ($_GET['tab'] === 'css'): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
                     <tr>
@@ -251,19 +259,22 @@ class JsDetect implements JsDetectInterface
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
-                                <textarea rows="50" class="large-text code" id="wp_non_js_notification_css" name="wp_non_js_notification_css"><?php echo get_option('wp_non_js_notification_css'); ?></textarea>
-                                <input type="submit" value="<?php _e('Update'); ?>" class="button button-primary button-large">
+                                <textarea rows="50" class="large-text code" id="wp_non_js_notification_css"
+                                          name="wp_non_js_notification_css"><?php echo get_option('wp_non_js_notification_css'); ?></textarea>
+                                <input type="submit" value="<?php _e('Update','js-detect'); ?>"
+                                       class="button button-primary button-large">
                             </form>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="column">
-							<?php echo $this->paypal_donate_button(); ?>
+                            <?php echo $this->paypal_donate_button(); ?>
                         </td>
                     </tr>
                     </tbody>
-                </table>			
-            <?php else: ?>
+                </table>
+            <?php
+            else: ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
                     <tr>
@@ -280,18 +291,20 @@ class JsDetect implements JsDetectInterface
                     <tbody>
                     <tr>
                         <td class="column">
-                            <label for="wp_non_js_notification_text">No Js Notification:</label>
+                            <label for="wp_non_js_notification_text"><?php _e('No Js Notification','js-detect'); ?>:</label>
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
-                                <textarea rows="10" class="large-text code" id="wp_non_js_notification_text" name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
-                                <input type="submit" value="<?php _e('Update'); ?>" class="button button-primary button-large">
+                                <textarea rows="10" class="large-text code" id="wp_non_js_notification_text"
+                                          name="wp_non_js_notification_text"><?php echo get_option('wp_non_js_notification_text'); ?></textarea>
+                                <input type="submit" value="<?php _e('Update','js-detect'); ?>"
+                                       class="button button-primary button-large">
                             </form>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="column">
-							<?php echo $this->paypal_donate_button(); ?>
+                            <?php echo $this->paypal_donate_button(); ?>
                         </td>
                     </tr>
                     </tbody>
@@ -311,43 +324,61 @@ class JsDetect implements JsDetectInterface
         echo '<div id="jsDisabled"><p>' . get_option('wp_non_js_notification_text') . '</p></div>';
 
     }
-    
+
     /**
      *  Function plugin_settings_link
      *  This function is used to add settings links on plugin page
-     *  @param $links
-     *  @return $links - array - extended array of the links.
+     *
+     * @param $links
+     * @return $links - array - extended array of the links.
      *
      */
-    public function plugin_settings_link($links) 
-	{ 
+    public function plugin_settings_link($links)
+    {
+        array_unshift($links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>');
+        array_unshift($links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>');
+        array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>');
+        return $links;
+    }
 
-      array_unshift($links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>'); 
-      array_unshift($links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>'); 
-      array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>');       
-      return $links; 
-    }    
-	
-	/**
-	 *	Function paypal_donate_button
-	 *	This function is used to output paypal donate button.
-	 *
-	*/
-	public function paypal_donate_button()
-	{
-		?>
-		<p><?php _e('Donate to support further development.'); ?></p>
-		<p><?php _e('I’m glad that you like my wordpress plugin and that you want to show your appreciation by
-			donating. With your help I can make these plugins even better!'); ?></p>
-		<p><?php _e('You can donate money using the PayPal-button below (any amount makes me happy!)'); ?></p>
-		<p>
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect"
-			   target="_blank" title="Make a Donation for Wp Js Detect Plugin">
-				<img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt=""/>
-			</a>
-		</p>		
-		<?php
-	}
+    /**
+     *    Function paypal_donate_button
+     *    This function is used to output paypal donate button.
+     *
+     */
+    public function paypal_donate_button()
+    {
+        ?>
+            <p><?php _e('Donate to support further development.','js-detect'); ?></p>
+            <p><?php _e('I’m glad that you like my wordpress plugin and that you want to show your appreciation by
+                donating. With your help I can make these plugins even better!','js-detect'); ?></p>
+            <p><?php _e('You can donate money using the PayPal-button below (any amount makes me happy!)','js-detect'); ?></p>
+            <p>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect"
+                   target="_blank" title="Make a Donation for Wp Js Detect Plugin">
+                    <img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt=""/>
+                </a>
+            </p>
+        <?php
+    }
+
+    /**
+     *  Function js_detect_init
+     *  This function is used to load the plugin's translated strings.
+     *
+     * */
+    public function js_detect_init()
+    {
+        load_plugin_textdomain( 'js-detect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+        $currentLocale = get_locale();
+        if ( !empty($currentLocale) ) {
+            $moFile = dirname(__FILE__) . "/languages/" . $currentLocale . ".mo";
+            if( @file_exists( $moFile ) && is_readable( $moFile) )
+                load_textdomain('js-detect', $moFile);
+        }
+    }
+
 }
 
 new JsDetect();
