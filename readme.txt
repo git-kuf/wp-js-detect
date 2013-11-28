@@ -21,6 +21,7 @@ Plugin has an option page in the wordpress admin panel where you can customize t
 = Documentation =
 
 Documentation will be maintained on the [GitHub Wiki here](https://github.com/git-kuf/wp-js-detect/wiki).
+Plugin Translation https://github.com/git-kuf/wp-js-detect/wiki/Plugin-Translation
 
 = Add-ons =
 There are no addons fo this simple plugin yet.
