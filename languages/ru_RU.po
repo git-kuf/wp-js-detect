@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JsDetect v1.0.7\n"
-"POT-Creation-Date: 2013-11-27 17:08+0200\n"
-"PO-Revision-Date: 2013-11-27 17:10+0200\n"
+"POT-Creation-Date: 2013-11-28 09:43+0200\n"
+"PO-Revision-Date: 2013-11-28 09:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Kuflievskiy Aleksey <kuflievskiy@gmail.com>\n"
 "Language: Russian\n"
@@ -49,6 +49,10 @@ msgstr "Email"
 msgid "Author URI"
 msgstr "Адрес "
 
+#: ../wp-js-detect.php:258
+msgid "No Js Notification CSS"
+msgstr "СSS-стили уведомления при выключенном JavaScript"
+
 #: ../wp-js-detect.php:264 ../wp-js-detect.php:300
 msgid "Update"
 msgstr "Сохранить"
@@ -64,13 +68,13 @@ msgstr "Поддержать дальнейшее развитие."
 #: ../wp-js-detect.php:353
 msgid ""
 "I’m glad that you like my wordpress plugin and that you want to show your "
-"appreciation by\n"
-"\t\t\tdonating. With your help I can make these plugins even better!"
+"appreciation by donating. With your help I can make these plugins even "
+"better!"
 msgstr ""
 "Мне очень приятно, что Вам нравиться мой плагин и что Вы показываете это "
 "своими взносами. С Вашей помощью я смогу сделать этот плагин лучше!"
 
-#: ../wp-js-detect.php:355
+#: ../wp-js-detect.php:354
 msgid ""
 "You can donate money using the PayPal-button below (any amount makes me "
 "happy!)"

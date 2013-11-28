@@ -255,7 +255,7 @@ class JsDetect implements JsDetectInterface
                     <tbody>
                     <tr>
                         <td class="column">
-                            <label for="wp_non_js_notification_css">No Js Notification CSS:</label>
+                            <label for="wp_non_js_notification_css"><?php _e('No Js Notification CSS','js-detect'); ?>:</label>
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
@@ -350,8 +350,7 @@ class JsDetect implements JsDetectInterface
     {
         ?>
             <p><?php _e('Donate to support further development.','js-detect'); ?></p>
-            <p><?php _e('I’m glad that you like my wordpress plugin and that you want to show your appreciation by
-                donating. With your help I can make these plugins even better!','js-detect'); ?></p>
+            <p><?php _e('I’m glad that you like my wordpress plugin and that you want to show your appreciation by donating. With your help I can make these plugins even better!','js-detect'); ?></p>
             <p><?php _e('You can donate money using the PayPal-button below (any amount makes me happy!)','js-detect'); ?></p>
             <p>
                 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect"
