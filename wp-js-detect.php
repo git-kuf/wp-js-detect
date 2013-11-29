@@ -8,7 +8,7 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 Plugin Name: WP JS Detect
 Plugin URI:  http://wordpress.org/plugins/wp-js-detect/
 Description: This plugin is used to display a notification message if the browser's Javascript is disabled. <a href="https://github.com/git-kuf/wp-js-detect" target="blank" title="GitHub Project Link">GitHub Project Link</a>
-Version: 1.0.7
+Version: 1.0.8
 Author: Kuflievskiy Alex <kuflievskiy@gmail.com>
 Author URI: https://github.com/git-kuf/
 License: GPLv2 license
@@ -184,7 +184,7 @@ class JsDetect implements JsDetectInterface
      */
     public function admin_menu_customization()
     {
-        add_menu_page(_('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
+        add_menu_page(__('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
     }
 
     /**
@@ -203,17 +203,20 @@ class JsDetect implements JsDetectInterface
         if (isset($_POST['wp_non_js_notification_css'])) {
             update_option('wp_non_js_notification_css', $_POST['wp_non_js_notification_css']);
         }
+
+        $tab = ( isset($_GET['tab']) ) ? $_GET['tab'] : '';
+
         ?>
         <div class="wrap">
             <div id="icon-tools" class="icon32"><br/></div>
             <h2><?php _e('Js Detect Settings','js-detect'); ?></h2>
-            <a class="nav-tab <?php echo ($_GET['tab'] == '') ? 'nav-tab-active' : ''; ?>"
+            <a class="nav-tab <?php echo ( $tab == '' ) ? 'nav-tab-active' : ''; ?>"
                href="/wp-admin/admin.php?page=js-detect-settings"><?php _e('Plugin Settings','js-detect'); ?></a>
-            <a class="nav-tab <?php echo ($_GET['tab'] == 'css') ? 'nav-tab-active' : ''; ?>"
+            <a class="nav-tab <?php echo ( $tab == 'css' ) ? 'nav-tab-active' : ''; ?>"
                href="/wp-admin/admin.php?page=js-detect-settings&tab=css"><?php _e('Plugin CSS','js-detect'); ?></a>
-            <a class="nav-tab <?php echo ($_GET['tab'] == 'contact') ? 'nav-tab-active' : ''; ?>"
+            <a class="nav-tab <?php echo ( $tab == 'contact' ) ? 'nav-tab-active' : ''; ?>"
                href="/wp-admin/admin.php?page=js-detect-settings&tab=contact"><?php _e('Contacts Me','js-detect'); ?></a>
-            <?php if ($_GET['tab'] === 'contact'): ?>
+            <?php if ( $tab === 'contact' ): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
                     <tr>
@@ -238,7 +241,7 @@ class JsDetect implements JsDetectInterface
                     </tr>
                     </tbody>
                 </table>
-            <?php elseif ($_GET['tab'] === 'css'): ?>
+            <?php elseif ( $tab === 'css' ) : ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
                     <tr>

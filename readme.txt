@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievs
 Tags: javascript,js, disabled js,disabled javascript,disabled javascript notification,disabled javascript message, warning 
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,4 +82,6 @@ The manual installation method involves downloading the plugin and uploading it 
 = 1.0.6 = 
 * BUGFIX: plugin url variable has been replaced with plugins_url function https://github.com/git-kuf/wp-js-detect/issues/2
 = 1.0.7 =
-* NEW : Ability to translate plugin has been added. 
+* NEW : Ability to translate plugin has been added.
+= 1.0.8 =
+* BUGFIX: Several minor warnings and notices have been fixed.
