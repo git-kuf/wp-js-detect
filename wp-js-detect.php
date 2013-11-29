@@ -210,12 +210,9 @@ class JsDetect implements JsDetectInterface
         <div class="wrap">
             <div id="icon-tools" class="icon32"><br/></div>
             <h2><?php _e('Js Detect Settings','js-detect'); ?></h2>
-            <a class="nav-tab <?php echo ( $tab == '' ) ? 'nav-tab-active' : ''; ?>"
-               href="/wp-admin/admin.php?page=js-detect-settings"><?php _e('Plugin Settings','js-detect'); ?></a>
-            <a class="nav-tab <?php echo ( $tab == 'css' ) ? 'nav-tab-active' : ''; ?>"
-               href="/wp-admin/admin.php?page=js-detect-settings&tab=css"><?php _e('Plugin CSS','js-detect'); ?></a>
-            <a class="nav-tab <?php echo ( $tab == 'contact' ) ? 'nav-tab-active' : ''; ?>"
-               href="/wp-admin/admin.php?page=js-detect-settings&tab=contact"><?php _e('Contacts Me','js-detect'); ?></a>
+            <a class="nav-tab <?php echo ( $tab == '' ) ? 'nav-tab-active' : ''; ?>" href="<?php echo admin_url('/admin.php?page=js-detect-settings'); ?>"><?php _e('Plugin Settings','js-detect'); ?></a>
+            <a class="nav-tab <?php echo ( $tab == 'css' ) ? 'nav-tab-active' : ''; ?>" href="<?php echo admin_url('/admin.php?page=js-detect-settings&tab=css'); ?>"><?php _e('Plugin CSS','js-detect'); ?></a>
+            <a class="nav-tab <?php echo ( $tab == 'contact' ) ? 'nav-tab-active' : ''; ?>" href="<?php echo admin_url('/admin.php?page=js-detect-settings&tab=contact'); ?>"><?php _e('Contacts Me','js-detect'); ?></a>
             <?php if ( $tab === 'contact' ): ?>
                 <table cellspacing="0" class="widefat post fixed" style="width: 100%">
                     <thead>
