@@ -12,7 +12,7 @@ This plugin is used to display a notification message if the browser's Javascrip
 
 == Travis CI ==
 
-<a href="https://travis-ci.org/git-kuf/wp-js-detect"><img src="https://travis-ci.org/git-kuf/wp-js-detect.png?branch=master"></a>
+[![Build Status](https://travis-ci.org/git-kuf/wp-js-detect.png?branch=master)](https://travis-ci.org/git-kuf/wp-js-detect)
 
 == Description ==
 
