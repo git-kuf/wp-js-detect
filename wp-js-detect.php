@@ -35,8 +35,7 @@ License: GPLv2 license
  * Interface JsDetectInterface
  *
  */
-interface JsDetectInterface
-{
+interface JsDetectInterface {
     public function __construct();
     public function install();
     public function uninstall();
@@ -53,15 +52,14 @@ interface JsDetectInterface
  * Class JsDetect
  *
  */
-class JsDetect implements JsDetectInterface
-{
+class JsDetect implements JsDetectInterface {
     /**
      *  Function __construct
      *  This is a class constructor function.
      *
      */
-    public function __construct()
-    {
+    public function __construct() {
+    
         add_action('wp_head', array($this, 'wp_non_js_notification'));
         add_action('admin_menu', array($this, 'admin_menu_customization'));
 
@@ -85,8 +83,7 @@ class JsDetect implements JsDetectInterface
      * @return  void
      *
      */
-    public function add_plugin_js()
-    {
+    public function add_plugin_js() {
         wp_enqueue_script('wp-js-detect-js', plugins_url('js/plugin.js', __FILE__));
     }
 
@@ -96,8 +93,7 @@ class JsDetect implements JsDetectInterface
      * @return  void
      *
      */
-    public function add_plugin_css()
-    {
+    public function add_plugin_css() {
         wp_enqueue_style('wp-js-detect-css-dynamic', plugins_url('css/dynamic.css.php', __FILE__));
     }
 
@@ -108,8 +104,7 @@ class JsDetect implements JsDetectInterface
      * @param -
      * @echo - CSS CODE
      */
-    public function plugin_wp_js_detect_css()
-    {
+    public function plugin_wp_js_detect_css() {    
         echo get_option('wp_non_js_notification_css');
     }
 
@@ -122,8 +117,8 @@ class JsDetect implements JsDetectInterface
      * @return    -
      *
      */
-    public function install()
-    {
+    public function install() {
+    
         $wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
         add_option('wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes');
 
@@ -168,8 +163,7 @@ class JsDetect implements JsDetectInterface
      * @return    -
      *
      */
-    public function uninstall()
-    {
+    public function uninstall() {
         delete_option('wp_non_js_notification_text');
         delete_option('wp_non_js_notification_css');
     }
@@ -182,8 +176,7 @@ class JsDetect implements JsDetectInterface
      * @return
      *
      */
-    public function admin_menu_customization()
-    {
+    public function admin_menu_customization() {
         add_menu_page(__('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
     }
 
@@ -195,8 +188,8 @@ class JsDetect implements JsDetectInterface
      * @return    -
      *
      */
-    public function plugin_settings()
-    {
+    public function plugin_settings() {
+    
         if (isset($_POST['wp_non_js_notification_text'])) {
             update_option('wp_non_js_notification_text', $_POST['wp_non_js_notification_text']);
         }
@@ -319,8 +312,7 @@ class JsDetect implements JsDetectInterface
      *  This function is used to output the notification.
      *
      */
-    public function wp_non_js_notification()
-    {
+    public function wp_non_js_notification() {
         echo '<div id="jsDisabled"><p>' . get_option('wp_non_js_notification_text') . '</p></div>';
 
     }
@@ -333,8 +325,8 @@ class JsDetect implements JsDetectInterface
      * @return $links - array - extended array of the links.
      *
      */
-    public function plugin_settings_link($links)
-    {
+    public function plugin_settings_link( $links ) {
+    
         array_unshift($links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>');
         array_unshift($links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>');
         array_unshift($links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>');
@@ -346,8 +338,7 @@ class JsDetect implements JsDetectInterface
      *    This function is used to output paypal donate button.
      *
      */
-    public function paypal_donate_button()
-    {
+    public function paypal_donate_button() {
         ?>
             <p><?php _e('Donate to support further development.','js-detect'); ?></p>
             <p><?php _e('I’m glad that you like my wordpress plugin and that you want to show your appreciation by donating. With your help I can make these plugins even better!','js-detect'); ?></p>
@@ -366,8 +357,8 @@ class JsDetect implements JsDetectInterface
      *  This function is used to load the plugin's translated strings.
      *
      * */
-    public function js_detect_init()
-    {
+    public function js_detect_init() {
+    
         load_plugin_textdomain( 'js-detect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
         $currentLocale = get_locale();
