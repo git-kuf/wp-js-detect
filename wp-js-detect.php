@@ -84,7 +84,7 @@ class JsDetect implements JsDetectInterface {
      *
      */
     public function add_plugin_js() {
-        wp_enqueue_script('wp-js-detect-js', plugins_url('js/plugin.js', __FILE__));
+        //wp_enqueue_script('wp-js-detect-js', plugins_url('js/plugin.js', __FILE__));
     }
 
     /**
@@ -304,7 +304,15 @@ class JsDetect implements JsDetectInterface {
      *
      */
     public function wp_non_js_notification() {
-        echo '<div id="jsDisabled"><p>' . get_option('wp_non_js_notification_text') . '</p></div>';
+        ?>
+        <div id="jsDisabled"><p><?php echo get_option('wp_non_js_notification_text'); ?></p></div>
+        <script>
+            var item = document.getElementById('jsDisabled');
+            if (item.style.display === "block" || !item.style.display) {
+                item.style.display = 'none';
+            }
+        </script>
+        <?php
 
     }
 
