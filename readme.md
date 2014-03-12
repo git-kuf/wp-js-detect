@@ -3,8 +3,8 @@ Contributors: wpkuf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect
 Tags: javascript,js, disabled js,disabled javascript,disabled javascript notification,disabled javascript message, warning 
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 1.0.8
+Tested up to: 3.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,8 +84,11 @@ The manual installation method involves downloading the plugin and uploading it 
 = 1.0.5 = 
 * NEW : Plugins JS and CSS locates in the separate files for now!  .js and .css files are included in the footer section of the site, so it should decrease the time of the site's loading. And you can pack these (.js+.css)files for now via other plugins!
 = 1.0.6 = 
-* BUGFIX: plugin url variable has been replaced with plugins_url function https://github.com/git-kuf/wp-js-detect/issues/2
+* bugfix: plugin url variable has been replaced with plugins_url function https://github.com/git-kuf/wp-js-detect/issues/2
 = 1.0.7 =
 * NEW : Ability to translate plugin has been added.
 = 1.0.8 =
-* BUGFIX: Several minor warnings and notices have been fixed.
+* bugfix: Several minor warnings and notices have been fixed.
+= 1.0.9 =
+    bugfix: https://github.com/git-kuf/wp-js-detect/issues/3
+    enhancement: https://github.com/git-kuf/wp-js-detect/issues/4
