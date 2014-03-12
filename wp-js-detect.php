@@ -113,9 +113,6 @@ class JsDetect implements JsDetectInterface {
      * Function install
      * This public function is used to add plugin option.
      *
-     * @param     -
-     * @return    -
-     *
      */
     public function install() {
     
@@ -159,9 +156,6 @@ class JsDetect implements JsDetectInterface {
      * Function uninstall
      * This public function is used to remove plugin options.
      *
-     * @param    -
-     * @return    -
-     *
      */
     public function uninstall() {
         delete_option('wp_non_js_notification_text');
@@ -172,9 +166,6 @@ class JsDetect implements JsDetectInterface {
      * Function admin_menu_customization
      * This public function is used for
      *
-     * @param
-     * @return
-     *
      */
     public function admin_menu_customization() {
         add_menu_page(__('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
@@ -184,17 +175,14 @@ class JsDetect implements JsDetectInterface {
      * Function plugin_settings
      * This public function is used to update plugin settings.
      *
-     * @param    -
-     * @return    -
-     *
      */
     public function plugin_settings() {
     
-        if (isset($_POST['wp_non_js_notification_text'])) {
-            update_option('wp_non_js_notification_text', $_POST['wp_non_js_notification_text']);
+        if ( isset( $_POST['wp_non_js_notification_text'] ) ) {
+            update_option('wp_non_js_notification_text', stripslashes_deep( $_POST['wp_non_js_notification_text'] ) );
         }
-        if (isset($_POST['wp_non_js_notification_css'])) {
-            update_option('wp_non_js_notification_css', $_POST['wp_non_js_notification_css']);
+        if ( isset( $_POST['wp_non_js_notification_css'] ) ) {
+            update_option( 'wp_non_js_notification_css', $_POST['wp_non_js_notification_css'] );
         }
 
         $tab = ( isset($_GET['tab']) ) ? $_GET['tab'] : '';
@@ -252,9 +240,12 @@ class JsDetect implements JsDetectInterface {
                         </td>
                         <td align="right" class="column">
                             <form action="#" method="post">
-                                <textarea rows="50" class="large-text code" id="wp_non_js_notification_css"
+                                <textarea rows="50"
+                                          class="large-text code"
+                                          id="wp_non_js_notification_css"
                                           name="wp_non_js_notification_css"><?php echo get_option('wp_non_js_notification_css'); ?></textarea>
-                                <input type="submit" value="<?php _e('Update','js-detect'); ?>"
+                                <input type="submit"
+                                       value="<?php _e('Update','js-detect'); ?>"
                                        class="button button-primary button-large">
                             </form>
                         </td>
