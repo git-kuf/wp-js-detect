@@ -126,7 +126,15 @@ class JsDetect implements JsDetectInterface {
                 width: 100%;
                 height: 100%;
                 background: url(" . plugins_url('images/dark-bg.png', __FILE__) . ") repeat;
-                z-index: 2000;
+                z-index: 2000;                
+                -webkit-transition-property: width height background-color font-size left top color;
+                -webkit-transition-duration:1s;
+                -webkit-transition-delay:1s;
+                -webkit-transition-timing-function: linear;
+                transition-property: width height background-color font-size left top color;
+                transition-duration:1s;
+                transition-delay:1s;
+                transition-timing-function: linear;
             }
             #jsDisabled p {
                 position: absolute;
