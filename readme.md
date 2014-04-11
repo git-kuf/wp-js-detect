@@ -14,7 +14,7 @@ This plugin is used to display a notification message if the browser's Javascrip
 Travis CI
 =========
 
-[![Build Status](https://travis-ci.org/git-kuf/wp-js-detect.png?branch=master)](https://travis-ci.org/git-kuf/wp-js-detect)
+[![Build Status](https://travis-ci.org/kuflievskiy/wp-js-detect.png?branch=master)](https://travis-ci.org/kuflievskiy/wp-js-detect)
 
 Description
 ===========
@@ -28,8 +28,8 @@ Plugin has an option page in the wordpress admin panel where you can customize t
 Documentation
 =============
 
-Documentation will be maintained on the [GitHub Wiki here](https://github.com/git-kuf/wp-js-detect/wiki).
-Plugin Translation https://github.com/git-kuf/wp-js-detect/wiki/Plugin-Translation
+Documentation will be maintained on the [GitHub Wiki here](https://github.com/kuflievskiy/wp-js-detect/wiki).
+Plugin Translation https://github.com/kuflievskiy/wp-js-detect/wiki/Plugin-Translation
 
 Add-ons
 -------
@@ -37,12 +37,12 @@ There are no addons fo this simple plugin yet.
 
 Contributing and reporting bugs
 -------------------------------
-You can post issues here: https://github.com/git-kuf/wp-js-detect/issues
+You can post issues here: https://github.com/kuflievskiy/wp-js-detect/issues
 You can contact me via email to notify about bug.
 
 Support
 -------
-Use the WordPress.org forums for community support - I cannot offer support directly for free. If you spot a bug, you can of course log it on [Github](https://github.com/git-kuf/wp-js-detect) instead where I can act upon it more efficiently.
+Use the WordPress.org forums for community support - I cannot offer support directly for free. If you spot a bug, you can of course log it on [Github](https://github.com/kuflievskiy/wp-js-detect) instead where I can act upon it more efficiently.
 
 If you want help with a customisation, hire a developer!
 
@@ -97,7 +97,7 @@ Changelog
 * NEW : Plugins JS and CSS locates in the separate files for now!  .js and .css files are included in the footer section of the site, so it should decrease the time of the site's loading. And you can pack these (.js+.css)files for now via other plugins!
 
 ### 1.0.6
-* bugfix: plugin url variable has been replaced with plugins_url function https://github.com/git-kuf/wp-js-detect/issues/2
+* bugfix: plugin url variable has been replaced with plugins_url function https://github.com/kuflievskiy/wp-js-detect/issues/2
 
 ### 1.0.7
 * NEW : Ability to translate plugin has been added.
@@ -106,5 +106,5 @@ Changelog
 * bugfix: Several minor warnings and notices have been fixed.
 
 ### 1.0.9
-* bugfix: https://github.com/git-kuf/wp-js-detect/issues/3
-* enhancement: https://github.com/git-kuf/wp-js-detect/issues/4
+* bugfix: https://github.com/kuflievskiy/wp-js-detect/issues/3
+* enhancement: https://github.com/kuflievskiy/wp-js-detect/issues/4
