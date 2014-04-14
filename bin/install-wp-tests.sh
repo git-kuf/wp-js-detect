@@ -76,7 +76,7 @@ install_db() {
 php_tools() {
 
 	## PHP_CodeSniffer
-		##sudo port install php5 +pear
+		sudo port install php5 +pear
 		sudo pear install PHP_CodeSniffer
 		phpenv rehash
 		git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
