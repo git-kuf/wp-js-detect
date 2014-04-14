@@ -98,13 +98,23 @@ php_tools() {
 
 	## PHP Copy/Paste Detector
 		curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+        
 	## PHP Mess Detector
+        #Installing as a PEAR package
 		pear config-set preferred_state beta
 		printf "\n" | pecl install imagick
 		pear channel-discover pear.phpmd.org
 		pear channel-discover pear.pdepend.org
 		pear install --alldeps phpmd/PHP_PMD
 		phpenv rehash
+        
+        # From the github repository
+        #git clone git://github.com/phpmd/phpmd.git
+        #cd phpmd
+        #git submodule update --init
+        #ant initialize
+        #cd ..
+        
 	## PHPLOC
 		curl -o phploc.phar https://phar.phpunit.de/phploc.phar
 
@@ -129,4 +139,4 @@ php_tools() {
 install_wp
 install_test_suite
 install_db
-php_tools
+#php_tools
