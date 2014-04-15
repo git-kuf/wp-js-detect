@@ -75,53 +75,24 @@ install_db() {
 
 php_tools() {
 
-
-	## PHP_CodeSniffer
-		sudo pear install PHP_CodeSniffer
-		phpenv rehash
-		git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
-
-	## PHP Copy/Paste Detector
-		curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
-        
-	## PHP Mess Detector
-        #Installing as a PEAR package
-		pear config-set preferred_state beta
-		printf "\n" | pecl install imagick
-		pear channel-discover pear.phpmd.org
-		pear channel-discover pear.pdepend.org
-		pear install --alldeps phpmd/PHP_PMD
-		phpenv rehash
-        
-        # From the github repository
-        #git clone git://github.com/phpmd/phpmd.git
-        #cd phpmd
-        #git submodule update --init
-        #ant initialize
-        #cd ..
-        
-	## PHPLOC
-		curl -o phploc.phar https://phar.phpunit.de/phploc.phar
-
-    ## PHP_CodeSniffer
-    	#phpcs --standard=PSR1 .
-    	#phpcs --standard=PSR2 .
-		phpcs --standard=WordPress-Coding-Standards .
-
-    ## PHP Copy/Paste Detector
-    	php phpcpd.phar --verbose .
-    ## PHP Mess Detector
-    	phpmd . text cleancode --exclude lightopenid
-        phpmd . text codesize --exclude lightopenid
-    	phpmd . text controversial --exclude lightopenid
-    	phpmd . text design --exclude lightopenid
-    	phpmd . text naming --exclude lightopenid
-    	phpmd . text unusedcode --exclude lightopenid
-    ## PHPLOC
-    	php phploc.phar .
+  ## PHP_CodeSniffer
+  # - phpcs --standard=PSR1 .
+  # - phpcs --standard=PSR2 .
+  - phpcs --standard=WordPress-Coding-Standards .
+  ## PHP Copy/Paste Detector
+  - php phpcpd.phar --verbose .
+  ## PHP Mess Detector
+  - phpmd . text cleancode --exclude lightopenid
+  - phpmd . text codesize --exclude lightopenid
+  - phpmd . text controversial --exclude lightopenid
+  - phpmd . text design --exclude lightopenid
+  - phpmd . text naming --exclude lightopenid
+  - phpmd . text unusedcode --exclude lightopenid
+  ## PHPLOC
+  - php phploc.phar .
 }
 
 install_wp
 install_test_suite
 install_db
-#php_tools
+php_tools
