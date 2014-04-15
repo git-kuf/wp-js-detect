@@ -83,7 +83,7 @@ php_tools() {
   # - phpcs --standard=PSR2 .
   #phpcs --standard=WordPress $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
   ## PHP Copy/Paste Detector
-  phpcpd --verbose $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
+  phpcpd --verbose $WP_CORE_DIR"wp-content/plugins/wp-js-detect/"
   ## PHP Mess Detector
   phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text cleancode --exclude lightopenid
   phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text codesize --exclude lightopenid
