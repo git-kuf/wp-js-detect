@@ -1,6 +1,6 @@
 <?php
 
-if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
+if ( preg_match( '#' . basename( __FILE__ ) . '#', $_SERVER['PHP_SELF'] ) ) {
     die('You are not allowed to call this page directly.');
 }
 
@@ -35,7 +35,7 @@ License: GPLv2 license
  * Interface JsDetectInterface
  *
  */
-interface JsDetectInterface {
+interface Js_Detect_Interface {
     public function __construct();
     public function install();
     public function uninstall();
@@ -52,7 +52,7 @@ interface JsDetectInterface {
  * Class JsDetect
  *
  */
-class JsDetect implements JsDetectInterface {
+class Js_Detect implements Js_Detect_Interface {
     /**
      *  Function __construct
      *  This is a class constructor function.
@@ -60,20 +60,20 @@ class JsDetect implements JsDetectInterface {
      */
     public function __construct() {
     
-        add_action('wp_head', array($this, 'wp_non_js_notification'));
-        add_action('admin_menu', array($this, 'admin_menu_customization'));
+        add_action('wp_head', array( $this, 'wp_non_js_notification' ) );
+        add_action('admin_menu', array( $this, 'admin_menu_customization' ) );
 
-        register_activation_hook(__FILE__, array($this, 'install'));
-        register_deactivation_hook(__FILE__, array($this, 'uninstall'));
+        register_activation_hook( __FILE__, array( $this, 'install' ) );
+        register_deactivation_hook( __FILE__, array( $this, 'uninstall' ) );
 
-        $plugin = plugin_basename(__FILE__);
-        add_filter("plugin_action_links_$plugin", array($this, 'plugin_settings_link'));
+        $plugin = plugin_basename( __FILE__ );
+        add_filter("plugin_action_links_$plugin", array( $this, 'plugin_settings_link' ) );
 
-        add_action('wp_footer', array($this, 'add_plugin_js'), -2);
-        add_action('wp_footer', array($this, 'add_plugin_css'), -3);
-        add_action('plugin_wp_js_detect_css', array($this, 'plugin_wp_js_detect_css'));
+        add_action('wp_footer', array( $this, 'add_plugin_js' ), -2 );
+        add_action('wp_footer', array( $this, 'add_plugin_css' ), -3 );
+        add_action('plugin_wp_js_detect_css', array( $this, 'plugin_wp_js_detect_css' ) );
 
-        add_action('plugins_loaded', array($this, 'js_detect_init'));
+        add_action('plugins_loaded', array( $this, 'js_detect_init' ) );
     }
 
 
@@ -94,7 +94,7 @@ class JsDetect implements JsDetectInterface {
      *
      */
     public function add_plugin_css() {
-        wp_enqueue_style('wp-js-detect-css-dynamic', plugins_url('css/dynamic.css.php', __FILE__));
+        wp_enqueue_style( 'wp-js-detect-css-dynamic', plugins_url( 'css/dynamic.css.php', __FILE__ ) );
     }
 
     /**
@@ -105,7 +105,7 @@ class JsDetect implements JsDetectInterface {
      * @echo - CSS CODE
      */
     public function plugin_wp_js_detect_css() {    
-        echo get_option('wp_non_js_notification_css');
+        echo get_option( 'wp_non_js_notification_css' );
     }
 
 
@@ -116,8 +116,8 @@ class JsDetect implements JsDetectInterface {
      */
     public function install() {
     
-        $wp_non_js_notification_text = __('For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
-        add_option('wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes');
+        $wp_non_js_notification_text = __( 'For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.');
+        add_option( 'wp_non_js_notification_text', $wp_non_js_notification_text, '', 'yes' );
 
         $wp_non_js_notification_css = "
 		/*no JS message*/
@@ -125,7 +125,7 @@ class JsDetect implements JsDetectInterface {
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                background: url(" . plugins_url('images/dark-bg.png', __FILE__) . ") repeat;
+                background: url(" . plugins_url('images/dark-bg.png', __FILE__ ) . ") repeat;
                 z-index: 2000;                
                 -webkit-transition-property: width height background-color font-size left top color;
                 -webkit-transition-duration:1s;
@@ -147,7 +147,7 @@ class JsDetect implements JsDetectInterface {
                 border-radius: 5px;
                 box-shadow: 0 0 10px #000;
                 padding: 30px 30px 30px 120px;
-                background: #fef5f2 url(" . plugins_url('images/symbol_error.png', __FILE__) . ") 30px 50% no-repeat;
+                background: #fef5f2 url(" . plugins_url('images/symbol_error.png', __FILE__ ) . ") 30px 50% no-repeat;
                 font-size: 20px;
                 text-align: left;
                 color: #333;
@@ -157,7 +157,7 @@ class JsDetect implements JsDetectInterface {
                 color: #d13131;
             }
 		";
-        add_option('wp_non_js_notification_css', $wp_non_js_notification_css, '', 'yes');
+        add_option('wp_non_js_notification_css', $wp_non_js_notification_css, '', 'yes' );
     }
 
     /**
@@ -166,8 +166,8 @@ class JsDetect implements JsDetectInterface {
      *
      */
     public function uninstall() {
-        delete_option('wp_non_js_notification_text');
-        delete_option('wp_non_js_notification_css');
+        delete_option( 'wp_non_js_notification_text' );
+        delete_option( 'wp_non_js_notification_css' );
     }
 
     /**
@@ -176,7 +176,7 @@ class JsDetect implements JsDetectInterface {
      *
      */
     public function admin_menu_customization() {
-        add_menu_page(__('Js Detect','js-detect'), 'Js Detect', 'administrator', 'js-detect-settings', array($this, 'plugin_settings'), '', 99999999);
+        add_menu_page( __( 'Js Detect','js-detect' ), 'Js Detect', 'administrator', 'js-detect-settings', array( $this, 'plugin_settings' ), '', 99999999 );
     }
 
     /**
@@ -187,7 +187,7 @@ class JsDetect implements JsDetectInterface {
     public function plugin_settings() {
     
         if ( isset( $_POST['wp_non_js_notification_text'] ) ) {
-            update_option('wp_non_js_notification_text', stripslashes_deep( $_POST['wp_non_js_notification_text'] ) );
+            update_option( 'wp_non_js_notification_text', stripslashes_deep( $_POST['wp_non_js_notification_text'] ) );
         }
         if ( isset( $_POST['wp_non_js_notification_css'] ) ) {
             update_option( 'wp_non_js_notification_css', $_POST['wp_non_js_notification_css'] );
@@ -316,7 +316,7 @@ class JsDetect implements JsDetectInterface {
         <div id="jsDisabled"><p><?php echo get_option('wp_non_js_notification_text'); ?></p></div>
         <script>
             var item = document.getElementById('jsDisabled');
-            if (item.style.display === "block" || !item.style.display) {
+            if ( item.style.display === "block" || !item.style.display ) {
                 item.style.display = 'none';
             }
         </script>
@@ -369,13 +369,14 @@ class JsDetect implements JsDetectInterface {
         load_plugin_textdomain( 'js-detect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
         $currentLocale = get_locale();
-        if ( !empty($currentLocale) ) {
-            $moFile = dirname(__FILE__) . "/languages/" . $currentLocale . ".mo";
-            if( @file_exists( $moFile ) && is_readable( $moFile) )
-                load_textdomain('js-detect', $moFile);
+        if ( !empty( $currentLocale ) ) {
+            $moFile = dirname( __FILE__ ) . "/languages/" . $currentLocale . ".mo";
+            if( @file_exists( $moFile ) && is_readable( $moFile ) ) {
+                load_textdomain( 'js-detect', $moFile );
+            }
         }
     }
 
 }
 
-new JsDetect();
+new Js_Detect();
