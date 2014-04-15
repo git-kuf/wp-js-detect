@@ -1,5 +1,12 @@
 #!/usr/bin/expect
 
+#  COMPOSER/TRAVIS
+#  ## Composer
+sudo apt-get -qq install dnsutils
+curl -s http://getcomposer.org/installer | php
+php composer.phar install
+composer self-update
+
 # Installing PHP Pear without user prompt
 spawn wget -O /tmp/go-pear.phar http://pear.php.net/go-pear.phar
 expect eof
