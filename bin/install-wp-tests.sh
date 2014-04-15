@@ -78,7 +78,7 @@ php_tools() {
   ## PHP_CodeSniffer
   # - phpcs --standard=PSR1 .
   # - phpcs --standard=PSR2 .
-  phpcs --standard=WordPress .
+  phpcs --standard=WordPress /tmp/wordpress/wp-content/plugins/wp-js-detect/
   ## PHP Copy/Paste Detector
   php phpcpd.phar --verbose .
   ## PHP Mess Detector
