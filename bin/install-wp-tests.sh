@@ -78,20 +78,20 @@ php_tools() {
   ## PHP_CodeSniffer
   # - phpcs --standard=PSR1 .
   # - phpcs --standard=PSR2 .
-  - phpcs --standard=WordPress-Coding-Standards .
+  phpcs --standard=WordPress-Coding-Standards .
   ## PHP Copy/Paste Detector
-  - php phpcpd.phar --verbose .
+  php phpcpd.phar --verbose .
   ## PHP Mess Detector
-  - phpmd . text cleancode --exclude lightopenid
-  - phpmd . text codesize --exclude lightopenid
-  - phpmd . text controversial --exclude lightopenid
-  - phpmd . text design --exclude lightopenid
-  - phpmd . text naming --exclude lightopenid
-  - phpmd . text unusedcode --exclude lightopenid
+  phpmd . text cleancode --exclude lightopenid
+  phpmd . text codesize --exclude lightopenid
+  phpmd . text controversial --exclude lightopenid
+  phpmd . text design --exclude lightopenid
+  phpmd . text naming --exclude lightopenid
+  phpmd . text unusedcode --exclude lightopenid
   ## PHPLOC
-  - php phploc.phar .
+  php phploc.phar .
 }
-
+	
 install_wp
 install_test_suite
 install_db
