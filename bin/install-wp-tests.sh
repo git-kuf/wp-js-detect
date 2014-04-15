@@ -1,3 +1,17 @@
+#!/usr/bin/expect
+
+# Installing PHP Pear without user prompt
+spawn wget -O /tmp/go-pear.phar http://pear.php.net/go-pear.phar
+expect eof
+
+spawn php /tmp/go-pear.phar
+
+expect "1-11, 'all' or Enter to continue:"
+send "\r"
+expect eof
+
+spawn rm /tmp/go-pear.phar
+
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
@@ -75,23 +89,8 @@ install_db() {
 
 php_tools() {
 
-    # wget http://pear.php.net/go-pear.phar
-    # php go-pear.phar
 
-    # Installing PHP Pear without user prompt
-    wget -O /tmp/go-pear.phar http://pear.php.net/go-pear.phar
-    expect eof
-
-    php /tmp/go-pear.phar
-
-    expect "1-11, 'all' or Enter to continue:"
-    send "\r"
-    expect eof
-
-    rm /tmp/go-pear.phar
-
-    
-	## PHP_CodeSniffer    
+	## PHP_CodeSniffer
 		sudo pear install PHP_CodeSniffer
 		phpenv rehash
 		git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
