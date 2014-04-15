@@ -11,6 +11,44 @@ env:
 
 before_script:
 
-    - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION 
+  # FUCK COMPOSER/TRAVIS
+  #  ## Composer
+  #  - sudo apt-get -qq install dnsutils
+  #  - curl -s http://getcomposer.org/installer | php
+  #  - php composer.phar install
+  #  - composer self-update
+  ## PHP_CodeSniffer
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
+  ## PHP Copy/Paste Detector
+  - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+  ## PHP Mess Detector
+  - pear config-set preferred_state beta
+  - printf "\n" | pecl install imagick
+  - pear channel-discover pear.phpmd.org
+  - pear channel-discover pear.pdepend.org
+  - pear install --alldeps phpmd/PHP_PMD
+  - phpenv rehash
+  ## PHPLOC
+  - curl -o phploc.phar https://phar.phpunit.de/phploc.phar
 
-script: phpunit
+script:
+  ## PHP_CodeSniffer
+  - phpcs --standard=PSR1 .
+  - phpcs --standard=PSR2 .
+  ## PHP Copy/Paste Detector
+  - php phpcpd.phar --verbose .
+  ## PHP Mess Detector
+  - phpmd . text cleancode --exclude lightopenid
+  - phpmd . text codesize --exclude lightopenid
+  - phpmd . text controversial --exclude lightopenid
+  - phpmd . text design --exclude lightopenid
+  - phpmd . text naming --exclude lightopenid
+  - phpmd . text unusedcode --exclude lightopenid
+  ## PHPLOC
+  - php phploc.phar .
+
+
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  phpunit

@@ -1,24 +1,3 @@
-#!/usr/bin/expect
-
-#  COMPOSER/TRAVIS
-#  ## Composer
-sudo apt-get -qq install dnsutils
-curl -s http://getcomposer.org/installer | php
-php composer.phar install
-composer self-update
-
-# Installing PHP Pear without user prompt
-spawn wget -O /tmp/go-pear.phar http://pear.php.net/go-pear.phar
-expect eof
-
-spawn php /tmp/go-pear.phar
-
-expect "1-11, 'all' or Enter to continue:"
-send "\r"
-expect eof
-
-spawn rm /tmp/go-pear.phar
-
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
