@@ -1,3 +1,4 @@
+# http://docs.travis-ci.com/user/build-configuration/
 language: php
 
 php:
@@ -9,6 +10,20 @@ env:
     - WP_VERSION=latest WP_MULTISITE=0
     # - WP_VERSION=latest WP_MULTISITE=1
 
+# whitelist
+branches:
+  only:
+    - master
+
+before_install:
+install:
+  ## PHP Copy/Paste Detector
+  # - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+
+  - wget https://phar.phpunit.de/phpcpd.phar
+  - chmod +x phpcpd.phar
+  - mv phpcpd.phar /usr/local/bin/phpcpd
+
 before_script:
 
   # FUCK COMPOSER/TRAVIS
@@ -17,12 +32,12 @@ before_script:
   #  - curl -s http://getcomposer.org/installer | php
   #  - php composer.phar install
   #  - composer self-update
+
   ## PHP_CodeSniffer
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $(pear config-get php_dir)/PHP/CodeSniffer/Standards/WordPress
-  ## PHP Copy/Paste Detector
-  - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+
   ## PHP Mess Detector
   - pear config-set preferred_state beta
   - printf "\n" | pecl install imagick
@@ -38,7 +53,10 @@ script:
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - phpunit
 
-
 notifications:
   email:
     kuflievskiy@gmail.com
+
+after_success:
+after_failure:
+after_script:
