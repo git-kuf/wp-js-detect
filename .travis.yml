@@ -22,7 +22,7 @@ install:
 
   - wget https://phar.phpunit.de/phpcpd.phar
   - chmod +x phpcpd.phar
-  - mv phpcpd.phar /usr/local/bin/phpcpd
+  - sudo mv phpcpd.phar /usr/local/bin/phpcpd
 
 before_script:
 
