@@ -31,7 +31,17 @@ install_wp() {
 	wget -nv -O $WP_CORE_DIR/wp-content/db.php https://raw.github.com/markoheijnen/wp-mysqli/master/db.php
 
 	cd $WP_CORE_DIR/wp-content/plugins
-	svn co --quiet http://plugins.svn.wordpress.org/wp-js-detect
+	
+    array=( "wp-js-detect" )
+    for element in ${array[@]}
+    do
+        svn co --quiet http://plugins.svn.wordpress.org/$element temporary_plugin_copy
+        mkdir $element
+        mv temporary_plugin_copy/trunk/*.* $element
+        rm -rf temporary_plugin_copy
+    done
+
+        
 }
 
 install_test_suite() {
