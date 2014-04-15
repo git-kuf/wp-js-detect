@@ -81,16 +81,19 @@ php_tools() {
   ## PHP_CodeSniffer
   # - phpcs --standard=PSR1 .
   # - phpcs --standard=PSR2 .
-  #phpcs --standard=WordPress $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
+  phpcs --standard=WordPress $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
+
   ## PHP Copy/Paste Detector
   phpcpd --verbose $WP_CORE_DIR"wp-content/plugins/wp-js-detect/"
+
   ## PHP Mess Detector
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text cleancode --exclude lightopenid
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text codesize --exclude lightopenid
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text controversial --exclude lightopenid
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text design --exclude lightopenid
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text naming --exclude lightopenid
-  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php" text unusedcode --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text cleancode --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text codesize --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text controversial --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text design --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text naming --exclude lightopenid
+  phpmd $WP_CORE_DIR"wp-content/plugins/wp-js-detect/" text unusedcode --exclude lightopenid
+
   ## PHPLOC
   php phploc.phar $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
 }
