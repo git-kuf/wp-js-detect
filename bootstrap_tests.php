@@ -7,12 +7,7 @@ $path = dirname( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) )
 if ( file_exists( $path ) ) {
     $GLOBALS['wp_tests_options'] = array(
         'active_plugins' => array(
-            'disable-password-change-email/index.php',
-            'google-universal-analytics/googleanalytics.php',
-            'nix-anti-spam-light/nix-antispam-light.php',
-            'theme-my-login/theme-my-login.php',
-            'tinymce-advanced/tinymce-advanced.php',
-            'wordpress-importer/wordpress-importer.php',
+            'wp-js-detect/wp-js-detect.php',
         )
     );
     require_once $path;
