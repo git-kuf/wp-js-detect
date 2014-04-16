@@ -15,7 +15,12 @@ branches:
     - master
 
 before_install:
+  # Use this to prepare the system to install prerequisites or dependencies
+  # e.g. sudo apt-get update
+
 install:
+  # Use this to install any prerequisites or dependencies necessary to run your build
+  
   ## PHP Copy/Paste Detector
   # - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
 
@@ -24,6 +29,8 @@ install:
   - sudo mv phpcpd.phar /usr/local/bin/phpcpd
 
 before_script:
+  # Use this to prepare your build for testing
+  # e.g. copy database configurations, environment variables, etc.
 
   # FUCK COMPOSER/TRAVIS
   #  ## Composer
