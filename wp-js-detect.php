@@ -41,7 +41,7 @@ interface Js_Detect_Interface {
     public function uninstall();
     public function plugin_settings();
     public function wp_non_js_notification();
-    public function plugin_settings_link( $links );
+    public function plugin_settings_link($links);
     public function paypal_donate_button();
     public function add_plugin_js();
     public function add_plugin_css();
