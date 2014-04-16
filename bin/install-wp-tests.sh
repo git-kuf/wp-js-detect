@@ -37,7 +37,7 @@ install_wp() {
     do
         svn co --quiet http://plugins.svn.wordpress.org/$element temporary_plugin_copy
         mkdir $element
-		mv temporary_plugin_copy/trunk/* $element/*
+		mv -r temporary_plugin_copy/trunk/* $element
         rm -rf temporary_plugin_copy
     done
 
