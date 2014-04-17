@@ -20,17 +20,6 @@ before_install:
 
 install:
   # Use this to install any prerequisites or dependencies necessary to run your build
-  
-  ## PHP Copy/Paste Detector
-  # - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
-
-  - wget https://phar.phpunit.de/phpcpd.phar
-  - chmod +x phpcpd.phar
-  - sudo mv phpcpd.phar /usr/local/bin/phpcpd
-
-before_script:
-  # Use this to prepare your build for testing
-  # e.g. copy database configurations, environment variables, etc.
 
   # FUCK COMPOSER/TRAVIS
   #  ## Composer
@@ -40,7 +29,7 @@ before_script:
   #  - composer self-update
 
   ## PHP_CodeSniffer
-  - pear install pear/PHP_CodeSniffer
+  - pear install PHP_CodeSniffer-2.0.0a1
   - phpenv rehash
   - git clone git://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $(pear config-get php_dir)/PHP/CodeSniffer/Standards/WordPress
 
@@ -53,6 +42,17 @@ before_script:
   - phpenv rehash
   ## PHPLOC
   - curl -o phploc.phar https://phar.phpunit.de/phploc.phar
+
+  ## PHP Copy/Paste Detector
+  # - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+
+  - wget https://phar.phpunit.de/phpcpd.phar
+  - chmod +x phpcpd.phar
+  - sudo mv phpcpd.phar /usr/local/bin/phpcpd
+
+before_script:
+  # Use this to prepare your build for testing
+  # e.g. copy database configurations, environment variables, etc.
 
 script:
 
