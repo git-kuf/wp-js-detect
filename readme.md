@@ -4,7 +4,7 @@ Wp Js Detect
  - Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect
  - Tags: javascript,js, disabled js,disabled javascript,disabled javascript notification,disabled javascript message, warning 
  - Requires at least: 3.5
- - Tested up to: 3.8
+ - Tested up to: 3.9
  - Stable tag: 1.0.9
  - License: GPLv2 or later
  - License URI: http://www.gnu.org/licenses/gpl-2.0.html
