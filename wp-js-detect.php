@@ -61,20 +61,20 @@ class Js_Detect implements Js_Detect_Interface {
 	 */
 	public function __construct() {
 	
-		add_action('wp_head', array( $this, 'wp_non_js_notification' ) );
-		add_action('admin_menu', array( $this, 'admin_menu_customization' ) );
+		add_action( 'wp_head', array( $this, 'wp_non_js_notification' ) );
+		add_action( 'admin_menu', array( $this, 'admin_menu_customization' ) );
 
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'uninstall' ) );
 
 		$plugin = plugin_basename( __FILE__ );
-		add_filter("plugin_action_links_$plugin", array( $this, 'plugin_settings_link' ) );
+		add_filter( "plugin_action_links_$plugin", array( $this, 'plugin_settings_link' ) );
 
-		add_action('wp_footer', array( $this, 'add_plugin_js' ), -2 );
-		add_action('wp_footer', array( $this, 'add_plugin_css' ), -3 );
-		add_action('plugin_wp_js_detect_css', array( $this, 'plugin_wp_js_detect_css' ) );
+		add_action( 'wp_footer', array( $this, 'add_plugin_js' ), -2 );
+		add_action( 'wp_footer', array( $this, 'add_plugin_css' ), -3 );
+		add_action( 'plugin_wp_js_detect_css', array( $this, 'plugin_wp_js_detect_css' ) );
 
-		add_action('plugins_loaded', array( $this, 'js_detect_init' ) );
+		add_action( 'plugins_loaded', array( $this, 'js_detect_init' ) );
 	}
 
 
