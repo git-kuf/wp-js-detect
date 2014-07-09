@@ -12,7 +12,7 @@
 // Add this plugin to WordPress for activation so it can be tested.
 
 $GLOBALS['wp_tests_options'] = array(
-    'active_plugins' => array( "wp-js-detect/wp-js-detect.php" ),
+	'active_plugins' => array( "wp-js-detect/wp-js-detect.php" ),
 );
 
 // If the wordpress-tests repo location has been customized (and specified
@@ -22,8 +22,8 @@ $GLOBALS['wp_tests_options'] = array(
 // Otherwise, we'll just assume that this plugin is installed in the WordPress
 // SVN external checkout configured in the wordpress-tests repo.
 
-if( false !== getenv( 'WP_TESTS_DIR' ) ) {
-    require getenv( 'WP_TESTS_DIR' ) . '/bootstrap.php';
+if ( false !== getenv( 'WP_TESTS_DIR' ) ) {
+	require getenv( 'WP_TESTS_DIR' ) . '/bootstrap.php';
 } else {
-    require dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) . '/bootstrap.php';
+	require dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) . '/bootstrap.php';
 }
