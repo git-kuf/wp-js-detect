@@ -179,9 +179,9 @@ class Js_Detect implements Js_Detect_Interface {
 	 */
 	public function admin_menu_customization() {
 		add_menu_page( __( 'Js Detect', 'js-detect' ), 'Js Detect', 'administrator', 'js-detect-settings', array(
-				$this,
-				'plugin_settings'
-			), '', 99999999 );
+			$this,
+			'plugin_settings'
+		), '', 99999999 );
 	}
 
 	/**
@@ -371,7 +371,7 @@ class Js_Detect implements Js_Detect_Interface {
 				<img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt=""/>
 			</a>
 		</p>
-		<?php
+	<?php
 	}
 
 	/**

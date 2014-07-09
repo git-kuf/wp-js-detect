@@ -1,0 +1,5 @@
+# phpStorm IDE ignoring
+.idea/
+
+# PHPUnit data
+build/
