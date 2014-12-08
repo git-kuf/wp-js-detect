@@ -349,7 +349,7 @@ class Js_Detect implements Js_Detect_Interface {
 	public function plugin_settings_link( $links ) {
 
 		array_unshift( $links, '<a target="_blank" href="/wp-admin/admin.php?page=js-detect-settings">Settings</a>' );
-		array_unshift( $links, '<a target="_blank" href="https://github.com/git-kuf/wp-js-detect/">GitHub Project Link</a>' );
+		array_unshift( $links, '<a target="_blank" href="https://github.com/kuflievskiy/wp-js-detect">GitHub Project Link</a>' );
 		array_unshift( $links, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kuflievskiy@gmail.com&item_name=Donation+for+Wp+Js+Detect">Donate Author</a>' );
 
 		return $links;
