@@ -91,7 +91,7 @@ php_tools() {
   ## PHP_CodeSniffer
   # - phpcs --standard=PSR1 .
   # - phpcs --standard=PSR2 .
-  phpcs --standard=WordPress --warning-severity=8 --error-severity=1 -p --report=emacs -v $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
+  ./phpcs/scripts/phpcs --standard=WordPress --warning-severity=8 --error-severity=1 -p --report=emacs -v $WP_CORE_DIR"wp-content/plugins/wp-js-detect/wp-js-detect.php"
 
   ## PHP Copy/Paste Detector
   phpcpd --verbose $WP_CORE_DIR"wp-content/plugins/wp-js-detect/"
