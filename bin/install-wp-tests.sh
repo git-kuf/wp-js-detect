@@ -10,7 +10,7 @@ DB_USER=$2
 DB_PASS=$3
 DB_HOST=${4-localhost}
 WP_VERSION=${5-master}
-
+INITIAL_DIR=$(pwd)
 WP_TESTS_DIR=${WP_TESTS_DIR-/tmp/wordpress-tests-lib}
 WP_CORE_DIR=/tmp/wordpress/
 
@@ -87,7 +87,7 @@ install_db() {
 }
 
 php_tools() {
-
+  cd $INITIAL_DIR
   ## PHP_CodeSniffer
   # - phpcs --standard=PSR1 .
   # - phpcs --standard=PSR2 .
